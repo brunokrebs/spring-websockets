@@ -1,21 +1,29 @@
 package com.auth0.samples;
 
 import org.springframework.messaging.simp.SimpMessagingTemplate;
-import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class MessageService {
 
-	private SimpMessagingTemplate template;
+	private static final String MESSAGES_TOPIC = "/topic/messages";
 
-	public MessageService(SimpMessagingTemplate template) {
+	private SimpMessagingTemplate template;
+	private MessageRepository messageRepository;
+
+	public MessageService(SimpMessagingTemplate template, MessageRepository messageRepository) {
 		this.template = template;
+		this.messageRepository = messageRepository;
 	}
 
-	@Scheduled(fixedRate = 5000)
-	public void scheduled() {
-		template.convertAndSend("/topic/messages", "Hello from STOMP");
-		System.out.println("message sent");
+	List<Message> getAll() {
+		return messageRepository.findAll();
+	}
+
+	void newMessage(Message message) {
+		messageRepository.insert(message);
+		template.convertAndSend(MESSAGES_TOPIC, message);
 	}
 }

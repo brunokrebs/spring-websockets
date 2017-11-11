@@ -7,15 +7,15 @@ import org.springframework.stereotype.Service;
 @Service
 public class MessageService {
 
-    private SimpMessagingTemplate template;
+	private SimpMessagingTemplate template;
 
-    public MessageService(SimpMessagingTemplate template) {
-        this.template = template;
-    }
+	public MessageService(SimpMessagingTemplate template) {
+		this.template = template;
+	}
 
-    @Scheduled(fixedRate = 5000)
-    public void scheduled() {
-        template.convertAndSend("/topic/messages", "Hello from STOMP");
-        System.out.println("message sent");
-    }
+	@Scheduled(fixedRate = 5000)
+	public void scheduled() {
+		template.convertAndSend("/topic/messages", "Hello from STOMP");
+		System.out.println("message sent");
+	}
 }

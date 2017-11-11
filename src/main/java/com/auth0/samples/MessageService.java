@@ -1,4 +1,4 @@
-package com.auth0.samples.springwebsockets;
+package com.auth0.samples;
 
 import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.scheduling.annotation.Scheduled;

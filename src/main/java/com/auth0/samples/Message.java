@@ -1,4 +1,4 @@
-package com.auth0.samples.springwebsockets;
+package com.auth0.samples;
 
 import lombok.Data;
 

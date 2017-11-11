@@ -1,4 +1,4 @@
-package com.auth0.samples.springwebsockets;
+package com.auth0.samples;
 
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.SendTo;

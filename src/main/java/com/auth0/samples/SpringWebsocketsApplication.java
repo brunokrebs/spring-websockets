@@ -1,4 +1,4 @@
-package com.auth0.samples.springwebsockets;
+package com.auth0.samples;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
